@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Authen
 {
-    public class Server : IAuthenticationService
+    public class Service : IAuthenticationService
     {
         public AuthToken Authenticate(string username, string password)
         {
@@ -15,9 +15,15 @@ namespace Authen
 
             AuthToken token = new AuthToken();
             DateTime dateTime = new DateTime().ToLocalTime();
-            token.Token = "33";
+            Random random = new Random();
+            token.Token = random.Next(0, 100).ToString();
             token.ExpiresAt = dateTime.AddHours(2);
             return token;
+        }
+
+        public Service()
+        {
+
         }
     }
 }

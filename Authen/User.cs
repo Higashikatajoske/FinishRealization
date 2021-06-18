@@ -6,15 +6,21 @@ namespace Authen
 {
     class User: IUser
     {
-        public string AuthToken { get; }
+        public string AuthToken { get; set; }
         public string Name { get; }
-        public string Surname { get; }
+        public string Password { get; }
 
-        public User(string _name, string _surname)
+        public User(string _name, string _password)
         {
             this.Name = _name;
-            this.Surname = _surname;
+            this.Password = _password;
             this.AuthToken = "0";
+        }
+
+        public void Autorization()
+        {
+            IAuthenticationService authService = new Service();
+            this.AuthToken = authService.Authenticate(this.Name, this.Password).Token;
         }
     }
 }

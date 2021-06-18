@@ -6,7 +6,8 @@ namespace Authen
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            User user = new User("Nikolay", "tetra");
+            user.Autorization();
         }
     }
 }
